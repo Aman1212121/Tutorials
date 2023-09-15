@@ -1,0 +1,81 @@
+package exception.demo;
+
+public class ExceptionDemo {
+      
+   public static void main(String args[]) {
+
+       Dog dog=null;
+      
+       try
+       {
+           System.out.println(dog.dogName);
+       }
+       catch(NullPointerException e)
+       {
+            dog = new Dog();
+ 
+            System.out.println(dog.dogName);
+       }
+   }
+}
+
+//Q1) what happens when an exception is thrown by main Method ?
+
+// When an exception is thrown by main() method, JAVA Runtime
+// terminates the program and prints the exception message and 
+// the stack trace in-system consle. 
+
+//Example :
+
+/*  package exception.demo;
+
+    public class ExceptionDemo {    
+
+      public static void main(String args[])
+      {
+         throw new nullPointerException();
+      }
+    
+    }
+*/
+
+//Q2) what do you understand by unreachablr catch block error.
+
+//    This error comes when you keep super classes first and 
+//    classes later.Like here We kept Exception which os parent
+//    of NullPointer Exception first.
+
+//    Hence the order of catch blocks must be from most specific 
+//    to most general ones.
+
+/*    Example: package exception.demo;
+               
+               public class ExceptionDemo
+               {
+                    public static void main(String args[])
+                    {
+                         Dog dog=null;
+                         try{ System.out.println(dog.dogname); }
+                         catch(Exception e){
+                           System.out.println(e.getMessage());
+                         }catch(NullPointerException e){
+                            System.out.println(e.getMessage());
+                         }         
+                    }
+               }
+*/
+//Q3) what is multi catch block
+/*    To reduce cod eduplication and makes it easier to maintain,
+      Java 7 came up with this muti catch block concept.
+      
+      Here the catch block arguements have different expectations piped.
+
+      E.g
+
+      try{
+           -------------
+      }
+      catch(NullPointerexception | SQLException ex){
+           ------------
+      }
+*/
